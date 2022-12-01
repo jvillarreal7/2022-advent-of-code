@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	// read file
-	// sum calories until blank is found, keep track of highest score
 	max_calories := 0
 	f, err := os.Open("../input.txt")
 	if err != nil {
