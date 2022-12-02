@@ -1,16 +1,16 @@
 const fs = require("fs");
 
-matchups = {
+const matchups = {
   A: "Z",
   B: "X",
   C: "Y",
 };
 
-equivalentPlays = { A: "X", B: "Y", C: "Z" };
+const equivalentPlays = { A: "X", B: "Y", C: "Z" };
 
-playValues = { Z: 3, Y: 2, X: 1 };
+const playValues = { Z: 3, Y: 2, X: 1 };
 
-outcomeValues = { win: 6, draw: 3, lose: 0 };
+const outcomeValues = { win: 6, draw: 3, lose: 0 };
 
 const getMatchOutcome = (playAgainst, ownPlay) => {
   if (ownPlay === equivalentPlays[playAgainst]) {
