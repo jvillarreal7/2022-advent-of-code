@@ -15,7 +15,7 @@ PLAY_VALUES = {"Z": 3, "Y": 2, "X": 1}
 OUTCOME_VALUES = {"win": 6, "draw": 3, "lose": 0}
 
 
-def get_match_outcome(play_against, own_play) -> str:
+def get_match_outcome(play_against: str, own_play: str) -> str:
     if own_play == EQUIVALENT_PLAYS[play_against]:
         return "draw"
     if MATCHUPS[play_against] == own_play:
