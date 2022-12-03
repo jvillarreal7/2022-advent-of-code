@@ -11,10 +11,7 @@ def get_rucksacks() -> list[tuple[str]]:
 
 def get_common_item(rucksack: tuple[str]) -> str:
     first_comp_set, second_comp_set = set(rucksack[0]), set(rucksack[1])
-    try:
-        return list(first_comp_set.intersection(second_comp_set))[0]
-    except IndexError:
-        print(rucksack)
+    return list(first_comp_set.intersection(second_comp_set))[0]
 
 
 def main():
