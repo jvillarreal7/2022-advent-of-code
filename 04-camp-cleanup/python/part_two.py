@@ -3,24 +3,24 @@ def get_split_assignment_pairs() -> list[tuple[str]]:
         return [tuple(line.strip("\n").split(",")) for line in f]
 
 
+def get_expanded_assignment(raw_assignment: str) -> list[int]:
+    return [
+        unit
+        for unit in range(
+            int(raw_assignment.split("-")[0]),
+            int(raw_assignment.split("-")[1]) + 1,
+        )
+    ]
+
+
 def get_expanded_assignment_pairs() -> list[tuple[list[int]]]:
     split_assignment_pairs = get_split_assignment_pairs()
     expanded_assignment_pairs = [
         (
-            [
-                unit
-                for unit in range(
-                    int(section[0].split("-")[0]), int(section[0].split("-")[1]) + 1
-                )
-            ],
-            [
-                unit
-                for unit in range(
-                    int(section[1].split("-")[0]), int(section[1].split("-")[1]) + 1
-                )
-            ],
+            get_expanded_assignment(raw_assignments[0]),
+            get_expanded_assignment(raw_assignments[1]),
         )
-        for section in split_assignment_pairs
+        for raw_assignments in split_assignment_pairs
     ]
     return expanded_assignment_pairs
 
