@@ -49,7 +49,7 @@ func getRucksacks() [][]string {
 }
 
 func getCommonItem(rucksack []string) string {
-	commonItem := intersect.SimpleGeneric[string](strings.Split(rucksack[0], ""), strings.Split(rucksack[1], ""))
+	commonItem := intersect.SimpleGeneric(strings.Split(rucksack[0], ""), strings.Split(rucksack[1], ""))
 	return commonItem[0]
 }
 
