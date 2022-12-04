@@ -21,23 +21,21 @@ def get_expanded_assignment_pairs() -> list[tuple[list[str]]]:
         return expanded_assignment_pairs
 
 
-def is_assignment_pair_fully_overlapping(assignment: tuple[list[str]]) -> bool:
-    first_assignment, second_assignment = assignment[0], assignment[1]
+def is_assignment_pair_overlapping(assignment_pair: tuple[list[str]]) -> bool:
+    first_assignment, second_assignment = assignment_pair[0], assignment_pair[1]
 
-    if len(first_assignment) == len(second_assignment):
-        return first_assignment == second_assignment
-    elif len(first_assignment) > len(second_assignment):
-        return all(unit in first_assignment for unit in second_assignment)
-    return all(unit in second_assignment for unit in first_assignment)
+    if len(first_assignment) >= len(second_assignment):
+        return any(unit in first_assignment for unit in second_assignment)
+    return any(unit in second_assignment for unit in first_assignment)
 
 
 def main():
-    full_overlap_count = 0
+    overlap_count = 0
     assignment_pairs = get_expanded_assignment_pairs()
     for assignment_pair in assignment_pairs:
-        if is_assignment_pair_fully_overlapping(assignment_pair):
-            full_overlap_count += 1
-    print(full_overlap_count)
+        if is_assignment_pair_overlapping(assignment_pair):
+            overlap_count += 1
+    print(overlap_count)
 
 
 main()
