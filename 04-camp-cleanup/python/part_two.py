@@ -4,11 +4,12 @@ def get_split_assignment_pairs() -> list[tuple[str]]:
 
 
 def get_expanded_assignment(raw_assignment: str) -> list[int]:
+    first_raw_range, second_raw_range = raw_assignment.split("-")
     return [
         unit
         for unit in range(
-            int(raw_assignment.split("-")[0]),
-            int(raw_assignment.split("-")[1]) + 1,
+            int(first_raw_range),
+            int(second_raw_range) + 1,
         )
     ]
 
