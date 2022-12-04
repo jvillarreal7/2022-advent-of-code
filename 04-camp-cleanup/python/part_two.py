@@ -1,27 +1,31 @@
-def get_expanded_assignment_pairs() -> list[tuple[list[str]]]:
+def get_split_assignment_pairs() -> list[tuple[str]]:
     with open("../input.txt", "r") as f:
-        split_assignment_pairs = [tuple(line.strip("\n").split(",")) for line in f]
-        expanded_assignment_pairs = [
-            (
-                [
-                    unit
-                    for unit in range(
-                        int(section[0].split("-")[0]), int(section[0].split("-")[1]) + 1
-                    )
-                ],
-                [
-                    unit
-                    for unit in range(
-                        int(section[1].split("-")[0]), int(section[1].split("-")[1]) + 1
-                    )
-                ],
-            )
-            for section in split_assignment_pairs
-        ]
-        return expanded_assignment_pairs
+        return [tuple(line.strip("\n").split(",")) for line in f]
 
 
-def is_assignment_pair_overlapping(assignment_pair: tuple[list[str]]) -> bool:
+def get_expanded_assignment_pairs() -> list[tuple[list[int]]]:
+    split_assignment_pairs = get_split_assignment_pairs()
+    expanded_assignment_pairs = [
+        (
+            [
+                unit
+                for unit in range(
+                    int(section[0].split("-")[0]), int(section[0].split("-")[1]) + 1
+                )
+            ],
+            [
+                unit
+                for unit in range(
+                    int(section[1].split("-")[0]), int(section[1].split("-")[1]) + 1
+                )
+            ],
+        )
+        for section in split_assignment_pairs
+    ]
+    return expanded_assignment_pairs
+
+
+def is_assignment_pair_overlapping(assignment_pair: tuple[list[int]]) -> bool:
     first_assignment, second_assignment = assignment_pair[0], assignment_pair[1]
 
     if len(first_assignment) >= len(second_assignment):
