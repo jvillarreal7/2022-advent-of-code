@@ -28,9 +28,7 @@ def get_expanded_assignment_pairs() -> list[tuple[list[int]]]:
 def is_assignment_pair_fully_overlapping(assignment_pair: tuple[list[int]]) -> bool:
     first_assignment, second_assignment = assignment_pair[0], assignment_pair[1]
 
-    if len(first_assignment) == len(second_assignment):
-        return first_assignment == second_assignment
-    elif len(first_assignment) > len(second_assignment):
+    if len(first_assignment) >= len(second_assignment):
         return all(unit in first_assignment for unit in second_assignment)
     return all(unit in second_assignment for unit in first_assignment)
 
