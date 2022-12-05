@@ -57,9 +57,9 @@ def get_horizontal_stacks_group(
 
 
 def build_initial_stacks(
-    horizontal_stacks_group: list[list[str]],
+    horizontal_stacks_group: list[list[str]], stack_quantity: int
 ) -> list[list[str]]:
-    stacks = [[] for i in range(len(horizontal_stacks_group) + 1)]
+    stacks = [[] for i in range(stack_quantity)]
     for i, stack in enumerate(stacks):
         for group in horizontal_stacks_group:
             for j, element in enumerate(group):
@@ -91,7 +91,7 @@ def main():
     content = get_input_content()
     quantity = get_stack_quantity(content)
     horizontal_group = get_horizontal_stacks_group(content, quantity)
-    initial_stacks = build_initial_stacks(horizontal_group)
+    initial_stacks = build_initial_stacks(horizontal_group, quantity)
     instruction_collection = get_instruction_collection(content)
     stacks_after_instructions = apply_instructions(
         instruction_collection, initial_stacks
