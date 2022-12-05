@@ -83,9 +83,7 @@ def apply_instructions(
 
 
 def get_top_crate_message(stacks: list[list[str]]) -> str:
-    message = ""
-    for stack in stacks:
-        message += stack[len(stack) - 1]
+    message = "".join([stack[len(stack) - 1] for stack in stacks])
     return message
 
 
