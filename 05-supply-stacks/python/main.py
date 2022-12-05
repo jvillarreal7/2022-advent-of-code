@@ -71,7 +71,7 @@ def build_initial_stacks(
 def apply_instructions(
     instruction_collection: list[dict[str, int]], stacks: list[list[str]]
 ) -> list[list[str]]:
-    for i, instruction in enumerate(instruction_collection):
+    for instruction in instruction_collection:
         quantity, source, destination = (
             instruction["quantity"],
             instruction["source"],
