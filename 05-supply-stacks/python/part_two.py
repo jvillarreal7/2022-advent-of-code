@@ -77,13 +77,10 @@ def apply_instructions(
             instruction["source"],
             instruction["destination"],
         )
-        if quantity < 2:
-            stacks[destination].append(stacks[source].pop())
-        else:
-            source_stack_slice = stacks[source][-quantity:]
-            stacks[destination] += source_stack_slice
-            for _ in range(quantity):
-                stacks[source].pop()
+        source_stack_slice = stacks[source][-quantity:]
+        stacks[destination] += source_stack_slice
+        for _ in range(quantity):
+            stacks[source].pop()
     return stacks
 
 
