@@ -3,7 +3,7 @@ def get_input_sequence() -> str:
         return f.readline()
 
 
-def get_marker(sequence: str) -> int:
+def get_characters_processed_before_marker(sequence: str) -> int:
     for i in range(14, len(sequence)):
         sequence_slice = sequence[i - 14 : i]
         if len(set(sequence_slice)) == 14:
@@ -11,4 +11,4 @@ def get_marker(sequence: str) -> int:
 
 
 sequence = get_input_sequence()
-print(get_marker(sequence))
+print(get_characters_processed_before_marker(sequence))
